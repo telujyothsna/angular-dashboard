@@ -1,0 +1,136 @@
+<aside class="col-xs-4 col-sm-5 col-md-3 col-lg-3">
+  <div class="row">
+    <panel class="col-xs-12 side-menu">
+      <panel-title>
+        Settings
+      </panel-title>
+      <panel-body>
+        <form action="" class="" name="settings">
+          <fieldset>
+            <h6 class="section-label">
+              Statistics Type
+            </h6>
+            <p>
+              <input type="radio" name="stattype" value="individual" class="radio-control form-control" id="statind" ng-model="formData.stattype">
+              <label class="nav-panel-items radio-label" for="statind">Individual</label>
+            </p>
+            <p>
+              <input type="radio" name="stattype" value="aggregate" disabled class="radio-control form-control" id="statagg" ng-model="formData.stattype">
+              <label class="nav-panel-items radio-label" for="statagg">Aggregate</label>
+            </p>
+          </fieldset>
+          <fieldset>
+            <h6 class="section-label">
+              Statistics Fields
+            </h6>
+            <div class="form-group">
+              <input type="checkbox" name="stat_fields" value="oxs_duration" class="checkbox-control form-control" id="oxs_dur" ng-model="formData.stat_fields.oxs_dur">
+              <label class="nav-panel-items checkbox-label" for="oxs_dur">OXS Duration</label>
+            </div>
+            <div class="form-group">
+              <input type="checkbox" name="stat_fields" value="oxs_packet_count" class="checkbox-control form-control" id="oxs_pkt" ng-model="formData.stat_fields.oxs_pkt">
+              <label class="nav-panel-items checkbox-label" for="oxs_pkt">OXS Packet Count</label>
+            </div>
+            <div class="form-group">
+              <input type="checkbox" name="stat_fields" value="oxs_byte_count" class="checkbox-control form-control" id="oxs_byt" ng-model="formData.stat_fields.oxs_byt">
+              <label class="nav-panel-items checkbox-label" for="oxs_byt">OXS Byte Count</label>
+            </div>
+            <div class="form-group">
+              <input type="checkbox" name="stat_fields" value="oxs_idle_time" class="checkbox-control form-control" id="oxs_idl" ng-model="formData.stat_fields.oxs_idl">
+              <label class="nav-panel-items checkbox-label" for="oxs_idl">OXS Idle Time</label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <h6 class="section-label">
+              Match Fields
+            </h6>
+            <div class="form-group">
+              <input type="checkbox" name="matchflds" value="dl_src" class="checkbox-control form-control" id="dl_src" ng-model="formData.matchflds.dl_src.selected">
+              <label class="nav-panel-items checkbox-label" for="dl_src">dl_src</label>
+              <input type="text" class="form-control checkbox-inp" name="dl_src_value" placeholder="Enter Mac address" ng-model="formData.matchflds.dl_src.value" ng-required="formData.matchflds.dl_src.selected" ng-pattern="macregex" />
+              <span class="fa validator" ng-class="{'fa-check success': settings.dl_src_value.$valid, 'fa-exclamation error': settings.dl_src_value.$invalid }" ng-if="(settings.dl_src_value.$valid || settings.dl_src_value.$invalid )&& formData.matchflds.dl_src.selected"></span>
+              <span class="validation-msg" ng-if="settings.dl_src_value.$invalid && formData.matchflds.dl_src.selected">Please enter a MAC address</span>
+            </div>
+            <div class="form-group">
+              <input type="checkbox" name="matchflds" value="dl_dst" class="checkbox-control form-control" id="dl_dst" ng-model="formData.matchflds.dl_dst.selected">
+              <label class="nav-panel-items checkbox-label" for="dl_dst">dl_dst</label>
+              <input type="text" class="form-control checkbox-inp" name="dl_dst_value" placeholder="Enter Mac address" ng-model="formData.matchflds.dl_dst.value" ng-required="formData.matchflds.dl_dst.selected" ng-pattern="macregex" />
+              <span class="fa validator" ng-class="{'fa-check success': settings.dl_dst_value.$valid, 'fa-exclamation error': settings.dl_dst_value.$invalid }" ng-if="(settings.dl_dst_value.$valid || settings.dl_dst_value.$invalid )&& formData.matchflds.dl_dst.selected"></span>
+              <span class="validation-msg" ng-if="settings.dl_dst_value.$invalid && formData.matchflds.dl_dst.selected">Please enter a MAC address</span>
+            </div>
+            <div class="form-group">
+              <input type="checkbox" name="matchflds" value="in_port" class="checkbox-control form-control" id="in_port" ng-model="formData.matchflds.in_port.selected">
+              <label class="nav-panel-items checkbox-label" for="in_port">in_port</label>
+              <input type="number" class="form-control checkbox-inp" name="in_port_value" placeholder="Enter Port number" ng-model="formData.matchflds.in_port.value" ng-required="formData.matchflds.in_port.selected" ng-min="1" ng-max="65535" />
+              <span class="fa validator" ng-class="{'fa-check success': settings.in_port_value.$valid, 'fa-exclamation error': settings.in_port_value.$invalid }" ng-if="(settings.in_port_value.$valid || settings.in_port_value.$invalid )&& formData.matchflds.in_port.selected"></span>
+              <span class="validation-msg" ng-if="settings.in_port_value.$invalid && formData.matchflds.in_port.selected">Please enter a Port number( 1 &mdash; 65535 )</span>
+            </div>
+            <div class="form-group">
+              <input type="checkbox" name="matchflds" value="ip" class="checkbox-control form-control" id="ip" ng-model="formData.matchflds.ip.selected">
+              <label class="nav-panel-items checkbox-label" for="ip">ip</label>
+            </div>
+            <div class="form-group">
+              <input type="checkbox" name="matchflds" value="icmp" class="checkbox-control form-control" id="icmp" ng-model="formData.matchflds.icmp.selected">
+              <label class="nav-panel-items checkbox-label" for="icmp">icmp</label>
+            </div>
+            <div class="form-group">
+              <input type="checkbox" name="matchflds" value="tcp" class="checkbox-control form-control" id="tcp" ng-model="formData.matchflds.tcp.selected">
+              <label class="nav-panel-items checkbox-label" for="tcp">tcp</label>
+            </div>
+            <div class="form-group">
+              <input type="checkbox" name="matchflds" value="udp" class="checkbox-control form-control" id="udp" ng-model="formData.matchflds.udp.selected">
+              <label class="nav-panel-items checkbox-label" for="udp">udp</label>
+            </div>
+          </fieldset>
+        </form>
+      </panel-body>
+      <panel-footer>
+        <button class="btn btn-primary btn-block" ng-click="dashboardCtrl.sendData()" ng-disabled="settings.$error">SAVE</button>
+      </panel-footer>
+    </panel>
+  </div>
+</aside>
+<div class="col-xs-8 col-sm-7 col-md-9 col-lg-9 disp-section">
+  <div class="row">
+    <panel class="col-xs-12">
+      <panel-title>
+        Selection
+      </panel-title>
+      <panel-body>
+        <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-3 text-center">
+            <h5>Top Speed</h5>
+            <meter-gauge gaugeconfig="top_speed_gauge"></meter-gauge>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-3 text-center">
+            <h5></h5>
+            <meter-gauge gaugeconfig="avg_speed_gauge"></meter-gauge>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-3 text-center">
+            <h5>Total time</h5>
+            <timer-gauge>
+              <hrs>9999</hrs>
+
+              <tlabel>Nanosecs</tlabel>
+            </timer-gauge>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-3 text-center">
+            <h5>Total time</h5>
+            <timer-gauge>
+              <hrs>01</hrs>
+              <mins>23</mins>
+              <secs>35</secs>
+              <tlabel>Millisecs</tlabel>
+            </timer-gauge>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <table-display dispname="Trips Table" dispdata="dashboardCtrl.tableData.data" cols="section:distance:avg_speed:top_speed:time"></table-display>
+          </div>
+        </div>
+      </panel-body>
+    </panel>
+  </div>
+
+</div>

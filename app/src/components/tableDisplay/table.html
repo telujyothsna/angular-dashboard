@@ -1,0 +1,24 @@
+<div class="table-display row">
+  <div class="col-xs-12">
+    <h4>{{ ctrl.dispname }}</h4>
+
+  </div>
+  <div class="col-xs-12">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th ng-repeat="item in ctrl.headers track by $index">
+            {{ item }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="item in ctrl.dispdata track by $index" ng-click="ctrl.rowClicked($index, item)">
+          <td ng-repeat="col in ctrl.headers track by $index">
+            {{ item[col] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,153 @@
+.dashboard {
+  .side-menu {
+    position: fixed;
+    top: $topbar-height + 10;
+    bottom: $footer-height;
+    left: 0;
+    .panel {
+      background: #282537;
+      background-image: -webkit-radial-gradient(top, circle cover, #3c3b52 0%, #252233 80%);
+      background-image: -moz-radial-gradient(top, circle cover, #3c3b52 0%, #252233 80%);
+      background-image: -o-radial-gradient(top, circle cover, #3c3b52 0%, #252233 80%);
+      background-image: radial-gradient(top, circle cover, #3c3b52 0%, #252233 80%);
+      border: 1px solid #444;
+      border-left: none;
+      border-radius: 0 5px 5px 0;
+      box-shadow: inset 0 0 100px hsla(0, 0%, 0%, .3), 0 5px 30px #444;
+      color: #fff;
+      text-shadow: 0 1px 0 #333;
+      letter-spacing: 1px;
+      margin-left: -15px;
+      height: 100%;
+      .panel-body {}
+      .panel-footer {
+        border-top: 1px solid #000;
+      }
+      .radio-control {
+        +label {
+          &:after,
+          &:before {
+            border-color: #ececec
+          }
+        }
+        &:checked {
+          +label:after {
+            background-color: #ececec
+          }
+        }
+      }
+      p {
+        margin-bottom: 0;
+      }
+      .section-label {
+        background: #f4f5f7;
+        border-radius: 0 15px 15px 0;
+        background-image: -webkit-linear-gradient(top, white, #e1e2eb);
+        background-image: -moz-linear-gradient(top, white, #e1e2eb);
+        background-image: -o-linear-gradient(top, white, #e1e2eb);
+        background-image: linear-gradient(to bottom, white, #e1e2eb);
+        color: #555;
+        font-weight: 500;
+        font-size: 14px;
+        padding: 10px 30px;
+        position: relative;
+        margin: 0 -15px 10px;
+        width: 100%;
+        text-shadow: none;
+        -webkit-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3), 0 1px 1px rgba(0, 0, 0, 0.2);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3), 0 1px 1px rgba(0, 0, 0, 0.2);
+      }
+      .btn-primary {
+        background: rgba(130, 96, 87, 1);
+        border: none;
+        position: relative;
+        border-bottom: 1px solid lighten(rgba(130, 96, 87, 1), 3%);
+        box-shadow: 0 5px 0 darken(rgba(130, 96, 87, 1), 15%), 0 1px 5px darken(rgba(130, 96, 87, 1), 45%);
+        max-width: 300px;
+        margin: 0 auto;
+        &:focus,
+        &:active,
+        &:hover {
+          box-shadow: 0 5px 0 darken(rgba(130, 96, 87, 1), 10%), 0 1px 5px darken(rgba(130, 96, 87, 1), 65%);
+          background: lighten(rgba(130, 96, 87, 1), 10%);
+          outline: none;
+        }
+        &:active {
+          box-shadow: 0 2px 0 darken(rgba(130, 96, 87, 1), 10%);
+          top: 2px;
+        }
+      }
+      fieldset {
+        padding: 15px 0;
+        border-bottom: 1px solid #555;
+        border-top: 1px solid #111;
+        &:first-child {
+          border-top: none;
+          padding-top: 0;
+        }
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+      .checkbox-control {
+        +label {
+          margin-bottom: 0;
+        }
+        ~.checkbox-inp {
+          opacity: 0;
+          background: transparent;
+          outline: none;
+          border: none;
+          border-bottom: 1px solid #cacaca;
+          border-radius: 0;
+          height: 0;
+          color: #fff;
+          padding: 0 25px 5px 10px;
+          box-shadow: none;
+          margin-bottom: 10px;
+          &:active,
+          &:focus {
+            box-shadow: none;
+            outline: none;
+          }
+        }
+        &:checked {
+          ~.checkbox-inp {
+            height: 24px;
+            opacity: 1;
+          }
+        }
+      }
+    }
+    .form-group {
+      margin-bottom: 0;
+      padding-left: 35px;
+      position: relative;
+      label {
+        margin-left: -35px;
+      }
+      .validator {
+        position: absolute;
+        bottom: 5px;
+        right: 15px;
+        &.success {
+          color: #38e468;
+        }
+        &.error {
+          color: #ff4524;
+        }
+      }
+      .validation-msg {
+        position: absolute;
+        right: 0;
+        font-size: 0.8em;
+        bottom: -15px;
+        color: #adff2f;
+        font-weight: 300;
+      }
+    }
+  }
+  .disp-section {
+    max-width: 1300px;
+  }
+}

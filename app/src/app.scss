@@ -1,0 +1,26 @@
+$fa-font-path: '/assets/fonts';
+@import url('https://fonts.googleapis.com/css?family=Orbitron');
+@import '~font-awesome/scss/font-awesome';
+@import 'theme';
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'components/filters/filters';
+@import 'components/panel/panel';
+@import 'components/sidebar/sidebar';
+@import 'components/tableDisplay/table';
+@import 'components/timergauge/timergauge';
+@import 'components/topbar/topbar';
+@import 'pages/main/main';
+@import 'pages/dashboard/dashboard';
+body {
+  background: #F0F3F4;
+}
+
+footer {
+  border-top: 1px solid #eaeaea;
+  height: $footer-height;
+  width: 100%;
+  color: #888;
+  font-size: 0.8em;
+  padding: 15px 15px;
+}

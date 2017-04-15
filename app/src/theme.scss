@@ -1,0 +1,117 @@
+$dark-bg: #1C2B36;
+$topbar-bg: $dark-bg;
+$topbar-height: 66px;
+$sidebar-bg: $dark-bg;
+$sidebar-expanded-width: 180px;
+$footer-height: 30px;
+@font-face {
+  font-family: LCDFont;
+  src: url('assets/fonts/modern_lcd_7/modern_lcd-7.ttf');
+}
+
+.radio-control {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  +label {
+    font-weight: 400;
+    position: relative;
+    transition: .28s ease;
+    line-height: 25px;
+    width: 100%;
+    padding: 5px 15px 5px 35px;
+    border-radius: 3px;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    &:before,
+    &:after {
+      border: 2px solid #5a5a5a;
+      border-radius: 50%;
+      content: '';
+      position: absolute;
+      left: 10px;
+      top: 5px;
+      margin: 4px;
+      width: 16px;
+      height: 16px;
+      z-index: 0;
+      transition: .28s ease;
+    }
+    &:after {
+      transform: scale(0);
+      background: #5a5a5a;
+      border: 2px solid #5a5a5a;
+    }
+  }
+  &:checked {
+    +label:before {
+      border-color: #5a5a5a;
+    }
+    +label:after {
+      transform: scale(0.6)
+    }
+  }
+  &[disabled] {
+    +label {
+      opacity: 0.6;
+    }
+  }
+}
+
+.checkbox-control {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  +label {
+    font-weight: 400;
+    position: relative;
+    transition: .28s ease;
+    line-height: 25px;
+    width: 100%;
+    padding: 5px 15px 5px 35px;
+    border-radius: 3px;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    &:before {
+      content: ' ';
+      border: 3px solid #fff;
+      width: 20px;
+      height: 20px;
+      margin: 4px;
+      cursor: pointer;
+      position: absolute;
+      left: 4px;
+      top: 4px;
+      background: -webkit-linear-gradient(top, #222222 0%, #45484d 100%);
+      background: linear-gradient(to bottom, #222222 0%, #45484d 100%);
+    }
+    &:after {
+      content: ' ';
+      width: 6px;
+      height: 12px;
+      border-right: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      position: absolute;
+      left: 15px;
+      top: 11px;
+      transform: rotate(45deg);
+      opacity: 0.2;
+      transition: 0.3s ease;
+    }
+  }
+  &:checked {
+    +label {
+      &:after {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

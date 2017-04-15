@@ -1,0 +1,60 @@
+.topbar {
+  height: $topbar-height;
+  background-color: $dark-bg;
+  color: #fff;
+  z-index: 10;
+  border: none;
+  padding: 17px 32px 17px 40px;
+  &.scrolled {
+    box-shadow: 2px 0 3px rgba(0, 0, 0, .5)
+  }
+  .app-logo {
+    color: #fff;
+    display: block;
+    font-size: 24px;
+    font-family: Roboto, sans-serif;
+    white-space: nowrap;
+    float: left;
+  }
+  >* {
+    line-height: 30px;
+  }
+  .search {
+    font-size: 13px;
+    line-height: 25px;
+    -webkit-transition: all .5s ease;
+    transition: all .5s ease;
+    width: 162px;
+    margin: 0 15px;
+    input[type="text"] {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid transparent;
+      color: inherit;
+      &:active,
+      &:focus {
+        outline: none;
+        box-shadow: none;
+        border-bottom: 1px solid darken(#fff, 30%);
+      }
+    }
+  }
+  .profile-dropdown {
+    right: 0;
+    left: initial;
+    &:before {
+      content: ' ';
+      width: 0;
+      height: 0;
+      top: -20px;
+      right: 10px;
+      border: 10px solid transparent;
+      border-bottom-color: #fff;
+      position: absolute;
+    }
+  }
+}
+
+.has-topbar {
+  padding-top: $topbar-height * 1.2;
+}

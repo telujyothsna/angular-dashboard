@@ -1,0 +1,63 @@
+.timergauge {
+  background: #282537;
+  background-image: -webkit-radial-gradient(top, circle cover, #3c3b52 0%, #252233 80%);
+  background-image: -moz-radial-gradient(top, circle cover, #3c3b52 0%, #252233 80%);
+  background-image: -o-radial-gradient(top, circle cover, #3c3b52 0%, #252233 80%);
+  background-image: radial-gradient(top, circle cover, #3c3b52 0%, #252233 80%);
+  box-shadow: inset 2px 4px 4px 1px #000;
+  color: #5eff00;
+  line-height: 100px;
+  padding: 55px 35px 55px 18px;
+  border-radius: 50%;
+  font-size: 15px;
+  font-family: LCDFont;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+  width: 200px;
+  height: 200px;
+  .hrs,
+  .mins,
+  .secs {
+    position: relative;
+    letter-spacing: 1px;
+    bottom: 5px;
+    left: 3px;
+    &:after {
+      content: '88';
+      opacity: 0.3;
+      position: absolute;
+      right: 0;
+    }
+  }
+  .hrs,
+  .mins {
+    font-size: 1.6em;
+  }
+  .hrs+.mins,
+  .mins+.secs {
+    margin-left: -15px;
+    &:before {
+      content: ':';
+      opacity: 0.7;
+      margin-left: -3px;
+    }
+  }
+  .secs {
+    &:before {
+      bottom: -2px;
+      height: 58px;
+    }
+  }
+  .tlabel {
+    position: absolute;
+    bottom: 30px;
+    height: 20px;
+    left: 0;
+    right: 0;
+    line-height: 1;
+    font-size: 10px;
+    letter-spacing: 1.1px;
+    width: 100%;
+  }
+}

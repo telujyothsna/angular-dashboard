@@ -1,0 +1,8 @@
+<div class="filters">
+  <ul class="list-unstyled">
+    <li ng-repeat="item in ctrl.items track by $index" ng-class="checkbox">
+      <label for=""><input type="checkbox" value="" ng-click="ctrl.toggleItem($index)">  {{ item.label }}</label>
+    </li>
+  </ul>
+  <button class="btn btn-info" ng-click="ctrl.applyFilter()">Apply</button>
+</div>

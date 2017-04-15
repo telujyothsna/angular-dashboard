@@ -1,0 +1,17 @@
+.app-sidebar {
+  position: fixed;
+  left: 0;
+  top: $topbar-height;
+  bottom: $footer-height;
+  width: $sidebar-expanded-width;
+  background: $sidebar-bg;
+  border-top: 1px solid darken($sidebar-bg, 4%);
+  display: none;
+}
+
+body.has-sidebar {
+  padding-left: $sidebar-expanded-width;
+  .app-sidebar {
+    display: block;
+  }
+}
