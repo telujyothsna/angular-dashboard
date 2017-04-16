@@ -112,7 +112,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: [
-              ["es2015", { "loose": true }]
+              ["es2015", { "loose": true, modules: false }]
             ],
             plugins: ["transform-runtime",
               "transform-flow-comments",

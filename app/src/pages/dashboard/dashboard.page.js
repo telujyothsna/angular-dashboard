@@ -52,7 +52,7 @@ export class dashboardController {
     };
 
     self.getTableData();
-    self.getFilters();
+
   }
 
   $onInit() {
@@ -81,70 +81,11 @@ export class dashboardController {
     self.scope.top_speed_gauge.needleVal = data.top_speed;
   }
 
-  getFilters() {
-    const self = this;
-
-    self.filters = [{
-        label: 'oxs-duration',
-        state: false
-      },
-      {
-        label: 'oxs-packet_count',
-        state: false
-      },
-      {
-        label: 'oxs-byte_count',
-        state: false
-      },
-      {
-        label: 'oxs-idle_time',
-        state: false
-      },
-    ];
-
-  }
 
   getTableData() {
     const self = this;
     self.tableData = {
-      data: [{
-          id: 1,
-          section: 'HSR to KIA',
-          mode: 'bus',
-          distance: 37,
-          avg_speed: 25,
-          top_speed: 50,
-          time: 65,
-        },
-        {
-          id: 2,
-          section: 'KIA to HSR',
-          mode: 'bus',
-          distance: 37,
-          avg_speed: 35,
-          top_speed: 75,
-          time: 45,
-        },
-        {
-          id: 2,
-          section: 'KBS to HSR',
-          mode: 'bus',
-          distance: 17,
-          avg_speed: 15,
-          top_speed: 25,
-          time: 90,
-        },
-        {
-          id: 2,
-          section: 'BTM to HSR',
-          mode: 'bus',
-          distance: 11,
-          avg_speed: 15,
-          top_speed: 55,
-          time: 45,
-        }
-
-      ]
+      data: [{ "duration": "417898.963s", "cookie": "0x0", "n_packets": "0", "priority": "0", "n_bytes": "0", "actions": "NORMAL", "table": "0" }]
     }
   }
 
