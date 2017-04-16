@@ -7,6 +7,7 @@
     <table class="table table-striped">
       <thead>
         <tr>
+          <th> Sl.no </th>
           <th ng-repeat="item in ctrl.headers track by $index">
             {{ item }}
           </th>
@@ -14,7 +15,8 @@
       </thead>
       <tbody>
         <tr ng-repeat="item in ctrl.dispdata track by $index" ng-click="ctrl.rowClicked($index, item)">
-          <td ng-repeat="col in ctrl.headers track by $index">
+          <td> {{ $index+1 }} </td>
+          <td ng-repeat="col in ctrl.dispkeys track by $index">
             {{ item[col] }}
           </td>
         </tr>

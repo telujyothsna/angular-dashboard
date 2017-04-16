@@ -6,6 +6,7 @@ export class TableDisplayComponent {
   constructor($scope, $element) {
     const self = this;
     self.headers = [];
+    self.dispkeys = [];
     self.scope = $scope;
     self.element = $element;
   }
@@ -30,9 +31,12 @@ export class TableDisplayComponent {
     let i;
     const self = this;
     self.headers = [];
-
-    if (self.cols) {
+    if (self.colLabels) {
+      self.headers = self.colLabels.split(':');
+      self.dispkeys = self.cols.split(':');
+    } else if (self.cols) {
       self.headers = self.cols.split(':');
+      self.dispkeys = self.headers;
     } else {
       for (i = 0; i < self.numItems; i++) {
         for (let j in self.dispdata[i]) {
@@ -41,7 +45,9 @@ export class TableDisplayComponent {
           }
         }
       }
+      self.dispkeys = self.headers;
     }
+
   }
 }
 
@@ -53,7 +59,8 @@ export default angular.module('dashboard.tableDisplay', [])
       dispname: '@',
       dispdata: '<',
       onrowclick: '&',
-      cols: '@'
+      cols: '@',
+      colLabels: '@'
     },
     template: require('./table.html'),
     controller: TableDisplayComponent,

@@ -13,14 +13,21 @@ export class dashboardController {
     self.scope.ngval = 0;
     self.scope.macregex = '^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$';
     self.scope.formData = { "stattype": "individual", "stat_fields": { "oxs_dur": false, "oxs_pkt": false, "oxs_byt": false, "oxs_idl": false }, "matchflds": { "dl_src": { "selected": false }, "dl_dst": { "selected": false }, "in_port": { "selected": false }, "ip": { "selected": false }, "icmp": { "selected": false }, "tcp": { "selected": false }, "udp": { "selected": false } } };
-    self.scope.avg_speed_gauge = {
+    self.duration = {
+      hrs: 0,
+      mins: 0,
+      secs: 0,
+      nanosecs: 0,
+      onlynano: false
+    }
+    self.scope.byte_gauge = {
       gaugeRadius: 100,
       minVal: 0,
-      maxVal: 100,
+      maxVal: 10000,
       needleVal: 0,
-      tickSpaceMinVal: 10,
-      tickSpaceMajVal: 10,
-      gaugeUnits: "Km/h",
+      tickSpaceMinVal: 100,
+      tickSpaceMajVal: 1000,
+      gaugeUnits: "mbps",
       tickColMaj: '#656D78',
       tickColMin: '#656D78',
       outerEdgeCol: '#CCD1D9',
@@ -32,14 +39,14 @@ export class dashboardController {
       defaultFonts: ''
     };
 
-    self.scope.top_speed_gauge = {
+    self.scope.pkt_count_gauge = {
       gaugeRadius: 100,
       minVal: 0,
       maxVal: 100,
       needleVal: 0,
-      tickSpaceMinVal: 10,
+      tickSpaceMinVal: 1,
       tickSpaceMajVal: 10,
-      gaugeUnits: "Km/h",
+      gaugeUnits: "packets",
       tickColMaj: '#656D78',
       tickColMin: '#656D78',
       outerEdgeCol: '#CCD1D9',
@@ -70,22 +77,24 @@ export class dashboardController {
     })
 
     self.$element.addClass('dashboard');
-    // self.scope.avg_speed_gauge.needleVal = self.tableData.data[0].avg_speed;
-    // self.scope.top_speed_gauge.needleVal = self.tableData.data[0].top_speed;
+    self.scope.duration = 0;
   }
 
   setActiveRow(data) {
     const self = this;
-    self.scope.ngval = data.avg_speed;
-    self.scope.avg_speed_gauge.needleVal = data.avg_speed;
-    self.scope.top_speed_gauge.needleVal = data.top_speed;
+    // self.scope.ngval = data.avg_speed;
+    self.scope.byte_gauge.needleVal = parseFloat(data.n_bytes);
+    self.scope.pkt_count_gauge.needleVal = data.n_packets;
+    self.scope.duration = parseFloat(data.duration);
+    self.scope.idletime = data.idle_age;
+
   }
 
 
   getTableData() {
     const self = this;
     self.tableData = {
-      data: [{ "duration": "417898.963s", "cookie": "0x0", "n_packets": "0", "priority": "0", "n_bytes": "0", "actions": "NORMAL", "table": "0" }]
+      data: [{ "duration": "417898.963s", "n_packets": "0", "priority": "0", "n_bytes": "0", idle_age: 3 }]
     }
   }
 

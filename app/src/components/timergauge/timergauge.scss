@@ -7,7 +7,7 @@
   box-shadow: inset 2px 4px 4px 1px #000;
   color: #5eff00;
   line-height: 100px;
-  padding: 55px 35px 55px 18px;
+  padding: 55px 15px;
   border-radius: 50%;
   font-size: 15px;
   font-family: LCDFont;
@@ -22,12 +22,11 @@
     position: relative;
     letter-spacing: 1px;
     bottom: 5px;
-    left: 3px;
     &:after {
-      content: '88';
-      opacity: 0.3;
-      position: absolute;
-      right: 0;
+      // content: '88';
+      // opacity: 0.3;
+      // position: absolute;
+      // right: 0;
     }
   }
   .hrs,
@@ -43,10 +42,11 @@
       margin-left: -3px;
     }
   }
-  .secs {
+  .mins+.secs {
     &:before {
       bottom: -2px;
       height: 58px;
+      margin-left: 1px;
     }
   }
   .tlabel {

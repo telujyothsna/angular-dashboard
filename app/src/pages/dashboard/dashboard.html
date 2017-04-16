@@ -99,34 +99,27 @@
       <panel-body>
         <div class="row">
           <div class="col-xs-6 col-sm-6 col-md-3 text-center">
-            <h5>Top Speed</h5>
-            <meter-gauge gaugeconfig="top_speed_gauge"></meter-gauge>
+            <h5 class="gauge-label">Byte Count</h5>
+            <meter-gauge gaugeconfig="byte_gauge"></meter-gauge>
           </div>
           <div class="col-xs-6 col-sm-6 col-md-3 text-center">
-            <h5></h5>
-            <meter-gauge gaugeconfig="avg_speed_gauge"></meter-gauge>
+            <h5 class="gauge-label">Packet Count</h5>
+            <meter-gauge gaugeconfig="pkt_count_gauge"></meter-gauge>
           </div>
           <div class="col-xs-6 col-sm-6 col-md-3 text-center">
-            <h5>Total time</h5>
-            <timer-gauge>
-              <hrs>9999</hrs>
-
-              <tlabel>Nanosecs</tlabel>
+            <h5 class="gauge-label">Duration</h5>
+            <timer-gauge secs="duration">
             </timer-gauge>
           </div>
           <div class="col-xs-6 col-sm-6 col-md-3 text-center">
-            <h5>Total time</h5>
-            <timer-gauge>
-              <hrs>01</hrs>
-              <mins>23</mins>
-              <secs>35</secs>
-              <tlabel>Millisecs</tlabel>
+            <h5 class="gauge-label">Idle Age</h5>
+            <timer-gauge tlabel="Nanosecs" val="idletime"></timer-gauge>
             </timer-gauge>
           </div>
         </div>
         <div class="row">
           <div class="col-xs-12">
-            <table-display dispname="Stats Table" dispdata="dashboardCtrl.tableData.data" cols="table:duration:cookie:n_packets:priority:n_bytes:actions"></table-display>
+            <table-display dispname="Stats Table" dispdata="dashboardCtrl.tableData.data" cols="duration:n_packets:n_bytes:idle_age" col-labels="Duration:Packet Count:Byte Count:Idle Age"></table-display>
           </div>
         </div>
       </panel-body>

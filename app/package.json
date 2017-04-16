@@ -4,7 +4,7 @@
   "description": "Ovs dashboard template using Angular 1.6 with ES6.",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server",
+    "dev": "webpack-dev-server --open",
     "build": "webpack -p --env=production"
   },
   "author": "Jyothsna T.",
