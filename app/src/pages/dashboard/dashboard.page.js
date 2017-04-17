@@ -94,7 +94,7 @@ export class dashboardController {
   getTableData() {
     const self = this;
     self.tableData = {
-      data: [{ "duration": "417898.963s", "n_packets": "0.5", "priority": "0", "n_bytes": "100", idle_age: 3 }]
+      data: [{ "duration": "417898.963s", "n_packets": "0.5", "priority": "0", "n_bytes": "100", idle_age: 3 }, { "duration": "20.1s", "n_packets": "0.78", "priority": "0", "n_bytes": "400", idle_age: "50" }]
     }
   }
 

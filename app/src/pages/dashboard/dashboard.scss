@@ -149,5 +149,16 @@
   }
   .disp-section {
     max-width: 1300px;
+    table {
+      border: 1px solid #385563;
+      thead {
+        background: #34495E;
+        th {
+          font-weight: 400;
+          color: #efefef;
+          letter-spacing: 0.7px;
+        }
+      }
+    }
   }
 }
