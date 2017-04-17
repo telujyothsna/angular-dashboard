@@ -23,10 +23,10 @@ export class dashboardController {
     self.scope.byte_gauge = {
       gaugeRadius: 100,
       minVal: 0,
-      maxVal: 10000,
+      maxVal: 1000,
       needleVal: 0,
-      tickSpaceMinVal: 100,
-      tickSpaceMajVal: 1000,
+      tickSpaceMinVal: 10,
+      tickSpaceMajVal: 100,
       gaugeUnits: "mbps",
       tickColMaj: '#656D78',
       tickColMin: '#656D78',
@@ -42,10 +42,10 @@ export class dashboardController {
     self.scope.pkt_count_gauge = {
       gaugeRadius: 100,
       minVal: 0,
-      maxVal: 100,
+      maxVal: 1,
       needleVal: 0,
-      tickSpaceMinVal: 1,
-      tickSpaceMajVal: 10,
+      tickSpaceMinVal: 0.05,
+      tickSpaceMajVal: 0.25,
       gaugeUnits: "packets",
       tickColMaj: '#656D78',
       tickColMin: '#656D78',
@@ -94,7 +94,7 @@ export class dashboardController {
   getTableData() {
     const self = this;
     self.tableData = {
-      data: [{ "duration": "417898.963s", "n_packets": "20", "priority": "0", "n_bytes": "100", idle_age: 3 }]
+      data: [{ "duration": "417898.963s", "n_packets": "0.5", "priority": "0", "n_bytes": "100", idle_age: 3 }]
     }
   }
 

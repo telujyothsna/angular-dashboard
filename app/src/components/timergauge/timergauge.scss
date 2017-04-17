@@ -22,12 +22,27 @@
   .secs {
     position: relative;
     letter-spacing: 1px;
-    bottom: 5px;
+    bottom: -20px;
+    display: inline-block;
+    position: relative;
+    line-height: 1em;
     &:after {
       // content: '88';
       // opacity: 0.3;
       // position: absolute;
       // right: 0;
+    }
+    .value,
+    .sub-label {
+      display: block;
+    }
+    .value {
+      line-height: 1em;
+    }
+    .sub-label {
+      line-height: 1em;
+      font-size: 8px;
+      margin-top: 5px;
     }
   }
   .val,
@@ -37,19 +52,24 @@
   }
   .hrs+.mins,
   .mins+.secs {
-    margin-left: -15px;
+    margin-left: 0px;
     &:before {
       content: ':';
       opacity: 0.7;
       margin-left: -3px;
+      position: absolute;
+      left: -14px;
     }
   }
   .mins+.secs {
     &:before {
-      bottom: -2px;
+      top: -2px;
       height: 58px;
       margin-left: 1px;
     }
+  }
+  .val {
+    bottom: 0;
   }
   .tlabel {
     position: absolute;

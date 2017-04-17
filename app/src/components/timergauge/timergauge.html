@@ -1,7 +1,16 @@
 <div class="timergauge">
   <span class="val" ng-if="val">{{ val }}</span>
-  <span class="hrs" ng-if="hrs">{{ hrs }}</span>
-  <span class="mins" ng-if="mins">{{ mins }}</span>
-  <span class="secs" ng-if="secs">{{ secs }}</span>
+  <span class="hrs" ng-if="hrs">
+    <span class="value">{{ hrs }}</span>
+  <span class="sub-label">HH</span>
+  </span>
+  <span class="mins" ng-if="mins">
+    <span class="value">{{ mins }}</span>
+  <span class="sub-label">MM</span>
+  </span>
+  <span class="secs" ng-if="secs">
+    <span class="value">{{ secs }}</span>
+  <span class="sub-label">SS</span>
+  </span>
   <span class="tlabel" ng-if="ctrl.tlabel">{{  ctrl.tlabel }}</span>
 </div>
