@@ -16,6 +16,7 @@
   margin: 0 auto;
   width: 200px;
   height: 200px;
+  .val,
   .hrs,
   .mins,
   .secs {
@@ -29,6 +30,7 @@
       // right: 0;
     }
   }
+  .val,
   .hrs,
   .mins {
     font-size: 1.6em;

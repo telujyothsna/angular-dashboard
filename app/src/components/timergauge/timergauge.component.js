@@ -35,13 +35,12 @@ export class TimergaugeComponent {
       self.$element[0].querySelector('.timergauge').style.width = (parent.clientWidth - 30) + 'px';
     }
 
-    if (self.secs !== '') {
+    if (self.secs != undefined) {
       self.calculateVals();
     } else {
       if (self.tlabel) {
-        if (self.val) {
-          self.scope.val = self.val;
-        }
+
+        self.setValAndLabel();
       }
       // self.scope.hp = self.transclude.isSlotFilled('hrs');
       // self.scope.mp = self.transclude.isSlotFilled('mins');
@@ -50,16 +49,19 @@ export class TimergaugeComponent {
     }
   }
 
+  setValAndLabel() {
+    const self = this;
+
+    self.scope.val = self.val || "0";
+  }
+
   $onChanges(changes) {
     const self = this;
-    if (changes.secs) {
+    if (changes.secs && changes.secs.currentValue) {
       self.calculateVals();
     } else {
-      console.log(changes)
       if (self.tlabel) {
-        if (self.hrs) {
-          self.scope.hrs = changes.hrs.currentValue;
-        }
+        self.setValAndLabel();
       }
       // self.scope.hp = self.transclude.isSlotFilled('hrs');
       // self.scope.mp = self.transclude.isSlotFilled('mins');
@@ -82,8 +84,6 @@ export default angular.module('dashboard.timergauge', [])
       // tlabel: '?tlabel'
     },
     bindings: {
-      hrs: '<',
-      mins: '<',
       secs: '<',
       tlabel: '@',
       val: '<'

@@ -83,18 +83,18 @@ export class dashboardController {
   setActiveRow(data) {
     const self = this;
     // self.scope.ngval = data.avg_speed;
+    console.log(parseFloat(data.n_bytes));
     self.scope.byte_gauge.needleVal = parseFloat(data.n_bytes);
     self.scope.pkt_count_gauge.needleVal = data.n_packets;
     self.scope.duration = parseFloat(data.duration);
     self.scope.idletime = data.idle_age;
-
   }
 
 
   getTableData() {
     const self = this;
     self.tableData = {
-      data: [{ "duration": "417898.963s", "n_packets": "0", "priority": "0", "n_bytes": "0", idle_age: 3 }]
+      data: [{ "duration": "417898.963s", "n_packets": "20", "priority": "0", "n_bytes": "100", idle_age: 3 }]
     }
   }
 
