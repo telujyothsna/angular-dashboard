@@ -20,41 +20,43 @@ export class dashboardController {
       nanosecs: 0,
       onlynano: false
     }
-    self.scope.byte_gauge = {
+    self.scope.pkt_count_gauge = {
       gaugeRadius: 100,
       minVal: 0,
       maxVal: 1000,
       needleVal: 0,
       tickSpaceMinVal: 10,
-      tickSpaceMajVal: 100,
-      gaugeUnits: "mbps",
-      tickColMaj: '#656D78',
-      tickColMin: '#656D78',
-      outerEdgeCol: '#CCD1D9',
-      pivotCol: '#434A54',
-      innerCol: '#E6E9ED',
-      unitsLabelCol: '#656D78',
-      tickLabelCol: '#656D78',
-      needleCol: '#434A54',
+      tickSpaceMajVal: 250,
+      gaugeUnits: "pkts",
+      tickColMaj: '#F5F7FA',
+      tickColMin: '#F5F7FA',
+      outerEdgeCol: '#434A54',
+      pivotCol: '#DA4453',
+      innerCol: '#000',
+      unitsLabelCol: '#E9573F',
+      tickLabelCol: '#F5F7FA',
+      needleCol: '#DA4453',
+      roundVal: true,
       defaultFonts: ''
     };
 
-    self.scope.pkt_count_gauge = {
+    self.scope.byte_gauge = {
       gaugeRadius: 100,
       minVal: 0,
       maxVal: 1,
       needleVal: 0,
       tickSpaceMinVal: 0.05,
       tickSpaceMajVal: 0.25,
-      gaugeUnits: "packets",
-      tickColMaj: '#656D78',
-      tickColMin: '#656D78',
-      outerEdgeCol: '#CCD1D9',
-      pivotCol: '#434A54',
-      innerCol: '#E6E9ED',
-      unitsLabelCol: '#656D78',
-      tickLabelCol: '#656D78',
-      needleCol: '#434A54',
+      gaugeUnits: "mbps",
+      tickColMaj: '#F5F7FA',
+      tickColMin: '#F5F7FA',
+      outerEdgeCol: '#434A54',
+      pivotCol: '#DA4453',
+      innerCol: '#000',
+      unitsLabelCol: '#E9573F',
+      tickLabelCol: '#F5F7FA',
+      needleCol: '#DA4453',
+
       defaultFonts: ''
     };
 
@@ -84,7 +86,7 @@ export class dashboardController {
     const self = this;
     // self.scope.ngval = data.avg_speed;
     console.log(parseFloat(data.n_bytes));
-    self.scope.byte_gauge.needleVal = parseFloat(data.n_bytes);
+    self.scope.byte_gauge.needleVal = parseFloat(data.n_bytes) / 1000.0;
     self.scope.pkt_count_gauge.needleVal = data.n_packets;
     self.scope.duration = parseFloat(data.duration);
     self.scope.idletime = data.idle_age;
@@ -94,7 +96,7 @@ export class dashboardController {
   getTableData() {
     const self = this;
     self.tableData = {
-      data: [{ "duration": "417898.963s", "n_packets": "0.5", "priority": "0", "n_bytes": "100", idle_age: 3 }, { "duration": "20.1s", "n_packets": "0.78", "priority": "0", "n_bytes": "400", idle_age: "50" }]
+      data: [{ "duration": "417898.963s", "n_packets": "114", "priority": "0", "n_bytes": "100", idle_age: 3 }, { "duration": "20.1s", "n_packets": "450", "priority": "0", "n_bytes": "400", idle_age: "50" }]
     }
   }
 

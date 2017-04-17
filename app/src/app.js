@@ -15,7 +15,7 @@ import 'highcharts-more-node';
 // import ngSanitize from 'angular-sanitize';
 
 import uiRouter from 'angular-ui-router';
-import meterGauge from 'angular-metergauge';
+import meterGauge from './angular-metergauge';
 //import 'highcharts-ng';
 import 'angular-data-table';
 import scrollPos from './directives/scroll-pos/scroll-pos.directive';

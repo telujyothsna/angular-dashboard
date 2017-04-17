@@ -153,12 +153,15 @@
       border: 1px solid #385563;
       thead {
         background: #34495E;
+        border-bottom: 5px solid lighten(#385563, 10%);
         th {
           font-weight: 400;
           color: #efefef;
           letter-spacing: 0.7px;
+          border: 1px solid lighten(#385563, 10%);
         }
       }
     }
   }
+  .gauge-label {}
 }
