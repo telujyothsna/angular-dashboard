@@ -4,20 +4,9 @@ import * as d3 from 'd3';
 
 window.d3 = d3;
 // import _ from 'lodash';
-import * as Highcharts from 'highcharts';
-import 'highcharts-more-node';
-
-// import angular from 'angular';
-
-// import ngAnimate from 'angular-animate';
-// import ngCookies from 'angular-cookies';
-// import ngResource from 'angular-resource';
-// import ngSanitize from 'angular-sanitize';
 
 import uiRouter from 'angular-ui-router';
 import meterGauge from './angular-metergauge';
-//import 'highcharts-ng';
-import 'angular-data-table';
 import scrollPos from './directives/scroll-pos/scroll-pos.directive';
 
 
@@ -42,9 +31,6 @@ console.log(scrollPos);
 angular.module('dashboard', [
     'ngTouch',
     uiRouter, meterGauge,
-    // 'highcharts-ng',
-    'angularjs-gauge',
-    'data-table',
     'ui.bootstrap',
 
     scrollPos,

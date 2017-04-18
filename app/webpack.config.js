@@ -45,10 +45,8 @@ module.exports = {
       'angularjs-gauge',
       'angular-resource',
       'angular-touch',
-      'angulartics',
       'd3',
-      'highcharts',
-      'highcharts-ng',
+
       'lodash',
       'moment',
       'ui-select',
