@@ -78,14 +78,20 @@ export class dashboardController {
       console.log(data);
     })
 
+    // self.http({
+    //   method: 'GET',
+    //   url: 'http://someendpoint/'
+    // }).then(response => {
+    //   self.tableData = response.data;
+    // });
+
     self.$element.addClass('dashboard');
     self.scope.duration = 0;
   }
 
   setActiveRow(data) {
     const self = this;
-    // self.scope.ngval = data.avg_speed;
-    console.log(parseFloat(data.n_bytes));
+
     self.scope.byte_gauge.needleVal = parseFloat(data.n_bytes) / 1000.0;
     self.scope.pkt_count_gauge.needleVal = data.n_packets;
     self.scope.duration = parseFloat(data.duration);
@@ -103,6 +109,7 @@ export class dashboardController {
   sendData() {
     const self = this;
     console.log(self.scope.formData);
+    console.log(JSON.stringify(self.scope.formData));
   }
 
 
