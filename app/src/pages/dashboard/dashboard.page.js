@@ -6,64 +6,73 @@ export class dashboardController {
 
   /*@ngInject*/
   constructor($http, $scope, $interval, $element) {
-    const self = this;
-    self.http = $http;
-    self.scope = $scope;
-    self.$element = $element;
-    self.scope.ngval = 0;
-    self.scope.macregex = '^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$';
-    self.scope.formData = { "stattype": "individual", "stat_fields": { "oxs_dur": false, "oxs_pkt": false, "oxs_byt": false, "oxs_idl": false }, "matchflds": { "dl_src": { "selected": false }, "dl_dst": { "selected": false }, "in_port": { "selected": false }, "ip": { "selected": false }, "icmp": { "selected": false }, "tcp": { "selected": false }, "udp": { "selected": false } } };
-    self.duration = {
-      hrs: 0,
-      mins: 0,
-      secs: 0,
-      nanosecs: 0,
-      onlynano: false
+      const self = this;
+      self.http = $http;
+      self.scope = $scope;
+      self.$element = $element;
+      self.scope.ngval = 0;
+      self.scope.macregex = '^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$';
+      self.scope.formData = { "stattype": "individual", "stat_fields": { "oxs_dur": false, "oxs_pkt": false, "oxs_byt": false, "oxs_idl": false }, "matchflds": { "dl_src": { "selected": false }, "dl_dst": { "selected": false }, "in_port": { "selected": false }, "ip": { "selected": false }, "icmp": { "selected": false }, "tcp": { "selected": false }, "udp": { "selected": false } } };
+      self.selectedFields = {
+        duration: true,
+        n_packets: true,
+        n_bytes: true,
+        idle_age: true
+      };
+
+      self.mandatoryCols = ['cookie', 'priority', 'match', 'actions'];
+      self.colLabels = ['Cookie', 'Priority', 'Match', 'Actions'];
+      self.duration = {
+        hrs: 0,
+        mins: 0,
+        secs: 0,
+        nanosecs: 0,
+        onlynano: false
+      }
+      self.scope.pkt_count_gauge = {
+        gaugeRadius: 100,
+        minVal: 0,
+        maxVal: 1000,
+        needleVal: 0,
+        tickSpaceMinVal: 10,
+        tickSpaceMajVal: 250,
+        gaugeUnits: "pkts",
+        tickColMaj: '#F5F7FA',
+        tickColMin: '#F5F7FA',
+        outerEdgeCol: '#434A54',
+        pivotCol: '#DA4453',
+        innerCol: '#000',
+        unitsLabelCol: '#E9573F',
+        tickLabelCol: '#F5F7FA',
+        needleCol: '#DA4453',
+        roundVal: true,
+        defaultFonts: ''
+      };
+
+      self.scope.byte_gauge = {
+        gaugeRadius: 100,
+        minVal: 0,
+        maxVal: 1,
+        needleVal: 0,
+        tickSpaceMinVal: 0.05,
+        tickSpaceMajVal: 0.25,
+        gaugeUnits: "mbps",
+        tickColMaj: '#F5F7FA',
+        tickColMin: '#F5F7FA',
+        outerEdgeCol: '#434A54',
+        pivotCol: '#DA4453',
+        innerCol: '#000',
+        unitsLabelCol: '#E9573F',
+        tickLabelCol: '#F5F7FA',
+        needleCol: '#DA4453',
+
+        defaultFonts: ''
+      };
+
+      self.getTableData();
     }
-    self.scope.pkt_count_gauge = {
-      gaugeRadius: 100,
-      minVal: 0,
-      maxVal: 1000,
-      needleVal: 0,
-      tickSpaceMinVal: 10,
-      tickSpaceMajVal: 250,
-      gaugeUnits: "pkts",
-      tickColMaj: '#F5F7FA',
-      tickColMin: '#F5F7FA',
-      outerEdgeCol: '#434A54',
-      pivotCol: '#DA4453',
-      innerCol: '#000',
-      unitsLabelCol: '#E9573F',
-      tickLabelCol: '#F5F7FA',
-      needleCol: '#DA4453',
-      roundVal: true,
-      defaultFonts: ''
-    };
-
-    self.scope.byte_gauge = {
-      gaugeRadius: 100,
-      minVal: 0,
-      maxVal: 1,
-      needleVal: 0,
-      tickSpaceMinVal: 0.05,
-      tickSpaceMajVal: 0.25,
-      gaugeUnits: "mbps",
-      tickColMaj: '#F5F7FA',
-      tickColMin: '#F5F7FA',
-      outerEdgeCol: '#434A54',
-      pivotCol: '#DA4453',
-      innerCol: '#000',
-      unitsLabelCol: '#E9573F',
-      tickLabelCol: '#F5F7FA',
-      needleCol: '#DA4453',
-
-      defaultFonts: ''
-    };
-
-    self.getTableData();
-
-  }
-
+    //duration:n_packets:n_bytes:idle_age
+    //Duration:Packet Count:Byte Count:Idle Age
   $onInit() {
     const self = this;
     const aside = self.$element[0].querySelector('.side-menu');
@@ -87,6 +96,49 @@ export class dashboardController {
 
     self.$element.addClass('dashboard');
     self.scope.duration = 0;
+    self.getColsToDisplay();
+  }
+
+  getColsToDisplay() {
+    const self = this;
+    const selected = Object.keys(_.pickBy(self.selectedFields, value => value));
+    self.dispCols = _.concat(self.mandatoryCols, selected);
+
+    self.dispLabels = _.clone(self.colLabels);
+    self.dispCols.map((item) => {
+      let tmp;
+      switch (item) {
+        case 'duration':
+          tmp = "Duration";
+          break;
+
+        case 'n_packets':
+          tmp = "Packet Count";
+          break;
+
+        case 'n_bytes':
+          tmp = 'Byte Count';
+          break;
+        case 'idle_age':
+          tmp = 'Idle Age';
+          break;
+      }
+
+      if (tmp) {
+        self.dispLabels.push(tmp);
+      }
+
+      self.dispColsStr = self.dispCols.join(':');
+      self.dispLabelsStr = self.dispLabels.join(':');
+      // self.scope.$apply();
+    });
+  }
+
+  toggleSelectedField(field) {
+    const self = this;
+
+    self.selectedFields[field] = !self.selectedFields[field];
+    self.getColsToDisplay();
   }
 
   setActiveRow(data) {

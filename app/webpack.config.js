@@ -42,7 +42,7 @@ module.exports = {
       'angular-cookies',
       'angular-ui-bootstrap',
       'angular-ui-router',
-      'angularjs-gauge',
+
       'angular-resource',
       'angular-touch',
       'd3',

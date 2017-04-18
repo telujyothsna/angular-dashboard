@@ -24,19 +24,19 @@
               Statistics Fields
             </h6>
             <div class="form-group">
-              <input type="checkbox" name="stat_fields" value="oxs_duration" class="checkbox-control form-control" id="oxs_dur" ng-model="formData.stat_fields.oxs_dur">
+              <input type="checkbox" name="stat_fields" value="oxs_duration" class="checkbox-control form-control" id="oxs_dur" ng-model="formData.stat_fields.oxs_dur" ng-checked="dashboardCtrl.selectedFields.duration" ng-click="dashboardCtrl.toggleSelectedField('duration')">
               <label class="nav-panel-items checkbox-label" for="oxs_dur">OXS Duration</label>
             </div>
             <div class="form-group">
-              <input type="checkbox" name="stat_fields" value="oxs_packet_count" class="checkbox-control form-control" id="oxs_pkt" ng-model="formData.stat_fields.oxs_pkt">
+              <input type="checkbox" name="stat_fields" value="oxs_packet_count" class="checkbox-control form-control" id="oxs_pkt" ng-model="formData.stat_fields.oxs_pkt" ng-checked="dashboardCtrl.selectedFields.n_packets" ng-click="dashboardCtrl.toggleSelectedField('n_packets')">
               <label class="nav-panel-items checkbox-label" for="oxs_pkt">OXS Packet Count</label>
             </div>
             <div class="form-group">
-              <input type="checkbox" name="stat_fields" value="oxs_byte_count" class="checkbox-control form-control" id="oxs_byt" ng-model="formData.stat_fields.oxs_byt">
+              <input type="checkbox" name="stat_fields" value="oxs_byte_count" class="checkbox-control form-control" id="oxs_byt" ng-model="formData.stat_fields.oxs_byt" ng-checked="dashboardCtrl.selectedFields.n_bytes" ng-click="dashboardCtrl.toggleSelectedField('n_bytes')">
               <label class="nav-panel-items checkbox-label" for="oxs_byt">OXS Byte Count</label>
             </div>
             <div class="form-group">
-              <input type="checkbox" name="stat_fields" value="oxs_idle_time" class="checkbox-control form-control" id="oxs_idl" ng-model="formData.stat_fields.oxs_idl">
+              <input type="checkbox" name="stat_fields" value="oxs_idle_time" class="checkbox-control form-control" id="oxs_idl" ng-model="formData.stat_fields.oxs_idl" ng-checked="dashboardCtrl.selectedFields.idle_age" ng-click="dashboardCtrl.toggleSelectedField('idle_age')">
               <label class="nav-panel-items checkbox-label" for="oxs_idl">OXS Idle Time</label>
             </div>
           </fieldset>
@@ -98,20 +98,21 @@
       </panel-title>
       <panel-body>
         <div class="row">
-          <div class="col-xs-6 col-sm-6 col-md-3 text-center">
-            <h5 class="gauge-label">Byte Count</h5>
-            <meter-gauge gaugeconfig="byte_gauge"></meter-gauge>
-          </div>
-          <div class="col-xs-6 col-sm-6 col-md-3 text-center">
+
+          <div class="col-xs-6 col-sm-6 col-md-3 text-center" ng-if="dashboardCtrl.selectedFields.n_packets">
             <h5 class="gauge-label">Packet Count</h5>
             <meter-gauge gaugeconfig="pkt_count_gauge"></meter-gauge>
           </div>
-          <div class="col-xs-6 col-sm-6 col-md-3 text-center">
+          <div class="col-xs-6 col-sm-6 col-md-3 text-center" ng-if="dashboardCtrl.selectedFields.n_bytes">
+            <h5 class="gauge-label">Byte Count</h5>
+            <meter-gauge gaugeconfig="byte_gauge"></meter-gauge>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-3 text-center" ng-if="dashboardCtrl.selectedFields.duration">
             <h5 class="gauge-label">Duration</h5>
             <timer-gauge secs="duration">
             </timer-gauge>
           </div>
-          <div class="col-xs-6 col-sm-6 col-md-3 text-center">
+          <div class="col-xs-6 col-sm-6 col-md-3 text-center" ng-if="dashboardCtrl.selectedFields.idle_age">
             <h5 class="gauge-label">Idle Age</h5>
             <timer-gauge tlabel="Nanosecs" val="idletime"></timer-gauge>
             </timer-gauge>
@@ -119,7 +120,10 @@
         </div>
         <div class="row">
           <div class="col-xs-12">
-            <table-display dispname="Details Table" dispdata="dashboardCtrl.tableData.data" cols="duration:n_packets:n_bytes:idle_age" col-labels="Duration:Packet Count:Byte Count:Idle Age"></table-display>
+            {{dashboardCtrl.dispLabelsStr}}
+          </div>
+          <div class="col-xs-12">
+            <table-display dispname="Flows" dispdata="dashboardCtrl.tableData.data" cols="dashboardCtrl.dispColsStr" col-labels="dashboardCtrl.dispLabelsStr"></table-display>
           </div>
         </div>
       </panel-body>

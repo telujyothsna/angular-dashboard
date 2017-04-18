@@ -16,7 +16,15 @@ export class TableDisplayComponent {
 
     self.numItems = self.dispdata.length;
     self.getHeaders();
+
+    self.scope.$watch('cols', function(newValue, oldValue) {
+
+      if (newValue !== oldValue) {
+        self.scope.$apply();
+      }
+    });
   }
+
 
   rowClicked(ind, item) {
     const self = this;
@@ -59,8 +67,8 @@ export default angular.module('dashboard.tableDisplay', [])
       dispname: '@',
       dispdata: '<',
       onrowclick: '&',
-      cols: '@',
-      colLabels: '@'
+      cols: '<',
+      colLabels: '<'
     },
     template: require('./table.html'),
     controller: TableDisplayComponent,
