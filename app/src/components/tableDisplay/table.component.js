@@ -15,16 +15,13 @@ export class TableDisplayComponent {
     const self = this;
 
     self.numItems = self.dispdata.length;
-    self.getHeaders();
-
-    self.scope.$watch('cols', function(newValue, oldValue) {
-
-      if (newValue !== oldValue) {
-        self.scope.$apply();
-      }
-    });
+    self.setHeaders();
   }
 
+  $onChanges() {
+    const self = this;
+    self.setHeaders();
+  }
 
   rowClicked(ind, item) {
     const self = this;
@@ -35,7 +32,7 @@ export class TableDisplayComponent {
     self.scope.$emit('table:rowclick', item);
   }
 
-  getHeaders() {
+  setHeaders() {
     let i;
     const self = this;
     self.headers = [];

@@ -99,29 +99,26 @@
       <panel-body>
         <div class="row">
 
-          <div class="col-xs-6 col-sm-6 col-md-3 text-center" ng-if="dashboardCtrl.selectedFields.n_packets">
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3 text-center" ng-show="dashboardCtrl.selectedFields.n_packets">
             <h5 class="gauge-label">Packet Count</h5>
             <meter-gauge gaugeconfig="pkt_count_gauge"></meter-gauge>
           </div>
-          <div class="col-xs-6 col-sm-6 col-md-3 text-center" ng-if="dashboardCtrl.selectedFields.n_bytes">
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3 text-center" ng-show="dashboardCtrl.selectedFields.n_bytes">
             <h5 class="gauge-label">Byte Count</h5>
             <meter-gauge gaugeconfig="byte_gauge"></meter-gauge>
           </div>
-          <div class="col-xs-6 col-sm-6 col-md-3 text-center" ng-if="dashboardCtrl.selectedFields.duration">
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3 text-center" ng-show="dashboardCtrl.selectedFields.duration">
             <h5 class="gauge-label">Duration</h5>
             <timer-gauge secs="duration">
             </timer-gauge>
           </div>
-          <div class="col-xs-6 col-sm-6 col-md-3 text-center" ng-if="dashboardCtrl.selectedFields.idle_age">
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3 text-center" ng-show="dashboardCtrl.selectedFields.idle_age">
             <h5 class="gauge-label">Idle Age</h5>
             <timer-gauge tlabel="Nanosecs" val="idletime"></timer-gauge>
             </timer-gauge>
           </div>
         </div>
         <div class="row">
-          <div class="col-xs-12">
-            {{dashboardCtrl.dispLabelsStr}}
-          </div>
           <div class="col-xs-12">
             <table-display dispname="Flows" dispdata="dashboardCtrl.tableData.data" cols="dashboardCtrl.dispColsStr" col-labels="dashboardCtrl.dispLabelsStr"></table-display>
           </div>

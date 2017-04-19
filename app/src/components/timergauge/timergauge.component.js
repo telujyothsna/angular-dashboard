@@ -47,6 +47,12 @@ export class TimergaugeComponent {
       // self.scope.sp = self.transclude.isSlotFilled('secs');
       // self.scope.lp = self.transclude.isSlotFilled('tlabel');
     }
+
+    if (self.subLabels) {
+      self.sl = self.subLabels.split(':');
+    } else {
+      self.sl = ['HH', 'MM', 'SS']
+    }
   }
 
   setValAndLabel() {
@@ -85,6 +91,7 @@ export default angular.module('dashboard.timergauge', [])
     },
     bindings: {
       secs: '<',
+      subLabels: '@',
       tlabel: '@',
       val: '<'
     }

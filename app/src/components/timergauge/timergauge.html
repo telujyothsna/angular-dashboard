@@ -2,15 +2,15 @@
   <span class="val" ng-if="val">{{ val }}</span>
   <span class="hrs" ng-if="hrs">
     <span class="value">{{ hrs }}</span>
-  <span class="sub-label">HH</span>
+  <span class="sub-label">{{ ctrl.sl[0] }}</span>
   </span>
   <span class="mins" ng-if="mins">
     <span class="value">{{ mins }}</span>
-  <span class="sub-label">MM</span>
+  <span class="sub-label">{{ ctrl.sl[1] }}</span>
   </span>
   <span class="secs" ng-if="secs">
     <span class="value">{{ secs }}</span>
-  <span class="sub-label">SS</span>
+  <span class="sub-label">{{ ctrl.sl[2] }}</span>
   </span>
   <span class="tlabel" ng-if="ctrl.tlabel">{{  ctrl.tlabel }}</span>
 </div>
