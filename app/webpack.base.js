@@ -59,35 +59,22 @@ config.module = {
     loader: ExtractTextPlugin.extract({
       fallback: 'style-loader',
       loader: ['css-loader', {
-          loader: 'sass-loader',
-          options: {
-            outputStyle: 'compressed',
-            includePaths: [
-              path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets'),
-              path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap'),
-              path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins')
-            ]
-          }
-        }]
-        // use: [{
-        //   loader: 'css-loader'
-        // }, {
-        //   loader: 'sass-loader',
-        //   options: {
-        //     outputStyle: 'compressed',
-        //     precision: 10,
-        //     sourceComments: false,
-        //     includePaths: [
-        //       path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets'),
-        //       path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap'),
-        //       path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins')
-        //     ]
-        //   }
-        // }]
+        loader: 'sass-loader',
+        options: {
+          outputStyle: 'compressed',
+          includePaths: [
+            path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets'),
+            path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap'),
+            path.resolve(__dirname, 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins')
+          ]
+        }
+      }]
     })
   }, {
+    test: /\.(jpg|png|gif|svg)$/i,
+    use: 'file-loader',
 
-  }]
+  }, ]
 };
 const babiliOptions = {};
 const babiliOverrides = {};
